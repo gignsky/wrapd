@@ -4,7 +4,7 @@ edition = "2021"
 # If you change the name here, you must also do it in flake.nix (and run `cargo generate-lockfile` afterwards)
 name = "wrapd"
 description = "A command line utility written entirely in Rust that creates tarballs from folders in the current working directory and optionally removes the folders that created those tarballs"
-version = "0.1.4-patch-0.5"
+version = "0.1.5"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
