@@ -41,7 +41,7 @@ jobs:
       - name: Get Cargo.toml version
         id: get_cargo_version
         run: |
-          CARGO_VERSION=$(awk '/^version = "/ {gsub(/"/, "", $3); print $3; exit}' Cargo.toml)
+          CARGO_VERSION=$(cargo metadata --no-deps --format-version 1 | jq -r '.packages[0].version')
           echo "Cargo Version = v$CARGO_VERSION"
           echo "CARGO_VERSION=$CARGO_VERSION" >> $GITHUB_ENV
 
