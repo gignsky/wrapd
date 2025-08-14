@@ -51,7 +51,6 @@ jobs:
           ext=""
           if [[ "${{ matrix.target }}" == *windows* ]]; then ext=".exe"; fi
           mkdir -p dist
-          cp target/${{ matrix.target }}/release/wrapd$ext dist/${{ matrix.binary_name }}-${{ matrix.target }}$ext
           cp target/${{ matrix.target }}/release/wrapd$ext dist/${{ matrix.binary_name }}-v${{ env.CARGO_VERSION }}-${{ matrix.target }}$ext
 
       - name: Upload artifact
