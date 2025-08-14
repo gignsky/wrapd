@@ -4,8 +4,6 @@ on:
   push:
     tags:
       - 'v*' # This will trigger the workflow on any push to a tag starting with 'v'
-    branches:
-      - feature/update-release-to-include-version-numbers
 
 permissions:
   contents: write
