@@ -1,3 +1,5 @@
+[![](https://raw.githubusercontent.com/dch82/Nixpkgs-Badges/main/nixpkgs-badge-dark.svg)](https://search.nixos.org/packages?size=1&show=wrapd)
+
 [![CI Nix](https://github.com/gignsky/wrap/actions/workflows/ci-nix.yml/badge.svg)](https://github.com/gignsky/wrap/actions/workflows/ci-nix.yml)
 [![Docs](https://github.com/gignsky/wrap/actions/workflows/docs.yml/badge.svg)](https://github.com/gignsky/wrap/actions/workflows/docs.yml)
 [![Release](https://github.com/gignsky/wrap/actions/workflows/release.yml/badge.svg)](https://github.com/gignsky/wrap/actions/workflows/release.yml)
