@@ -38,17 +38,25 @@ jobs:
       - name: Build binary
         run: cargo zigbuild --release --target ${{ matrix.target }}
 
+      - name: Get Cargo.toml version
+        id: get_cargo_version
+        run: |
+          CARGO_VERSION=$(cargo metadata --no-deps --format-version 1 | jq -r '.packages[0].version')
+          echo "Cargo Version = v$CARGO_VERSION"
+          echo "CARGO_VERSION=$CARGO_VERSION" >> $GITHUB_ENV
+
       - name: Rename binary for upload
         run: |
+          CURRENT_TAG=${{ github.ref_name }}
           ext=""
           if [[ "${{ matrix.target }}" == *windows* ]]; then ext=".exe"; fi
           mkdir -p dist
-          cp target/${{ matrix.target }}/release/wrapd$ext dist/${{ matrix.binary_name }}-${{ matrix.target }}$ext
+          cp target/${{ matrix.target }}/release/wrapd$ext dist/${{ matrix.binary_name }}-v${{ env.CARGO_VERSION }}-${{ matrix.target }}$ext
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: binaries-${{ matrix.binary_name }}-${{ matrix.target }}
+          name: binaries-${{ matrix.binary_name }}-v${{ env.CARGO_VERSION }}-${{ matrix.target }}
           path: dist/*
 
   release:

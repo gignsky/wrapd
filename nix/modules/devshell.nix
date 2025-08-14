@@ -17,6 +17,8 @@
         wslu
         cargo-generate
         python3
+        lazygit
+        gitflow
 
         # dotfiles programs
         inputs.dotfiles.packages.${system}.quick-results
@@ -24,7 +26,7 @@
         inputs.dotfiles.packages.${system}.cargo-update
       ];
       shellHook = ''
-        echo "welcome to the rust development environment for the wrap package" | ${pkgs.cowsay}/bin/cowsay
+        echo "welcome to the rust development environment for the wrap package" | ${pkgs.cowsay}/bin/cowsay | ${pkgs.lolcat}/bin/lolcat 2> /dev/null;
       '';
     };
   };

@@ -26,6 +26,12 @@
         "belfz.search-crates-io",
         "kevinkassimo.cargo-toml-snippets",
         "taiyuuki.vscode-cargo-scripts",
-        "washan.cargo-appraiser"
+        "washan.cargo-appraiser",
+        "bradzacher.vscode-coloured-status-bar-problems",
+        "usernamehw.errorlens",
+        "pkief.material-icon-theme",
+        "bbenoist.nix",
+        "duniul.git-stage",
+        "gruntfuggly.todo-tree"
     ]
 }

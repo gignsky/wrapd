@@ -13,7 +13,8 @@
         "**/Thumbs.db": true,
         ".direnv": true,
         ".gitignore": true,
-        ".envrc": true
+        ".envrc": true,
+        "**/.cspell": true
     },
     "explorerExclude.backup": {},
     "editor.formatOnSaveMode": "modificationsIfAvailable",
