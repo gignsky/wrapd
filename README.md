@@ -5,6 +5,9 @@
 [![Release](https://github.com/gignsky/wrap/actions/workflows/release.yml/badge.svg)](https://github.com/gignsky/wrap/actions/workflows/release.yml)
 [![Update README with --help Output](https://github.com/gignsky/wrap/actions/workflows/help-to-readme.yml/badge.svg)](https://github.com/gignsky/wrap/actions/workflows/help-to-readme.yml)
 
+[![Packaging status](https://repology.org/badge/vertical-allrepos/vim%3Athemery.nvim.svg)](https://repology.org/project/vim%3Athemery.nvim/versions)
+
+# Description
 A command line utility written entirely in rust that creates tarballs from folders in the current working directory and optionally remove the folders that created those tarballs
 
 # Installation & Usage
