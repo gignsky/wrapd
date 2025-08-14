@@ -4,6 +4,8 @@ on:
   push:
     tags:
       - 'v*' # This will trigger the workflow on any push to a tag starting with 'v'
+    branches:
+      - feature/update-release-to-include-version-numbers
 
 permissions:
   contents: write
@@ -38,6 +40,12 @@ jobs:
       - name: Build binary
         run: cargo zigbuild --release --target ${{ matrix.target }}
 
+      - name: Get Cargo.toml version
+        id: get_cargo_version
+        run: |
+          CARGO_VERSION=$(awk '/^version = "/ {gsub(/"/, "", $3); print $3; exit}' Cargo.toml)
+          echo "Cargo Version = v$CARGO_VERSION"
+
       - name: Rename binary for upload
         run: |
           CURRENT_TAG=${{ github.ref_name }}
@@ -45,11 +53,18 @@ jobs:
           if [[ "${{ matrix.target }}" == *windows* ]]; then ext=".exe"; fi
           mkdir -p dist
           cp target/${{ matrix.target }}/release/wrapd$ext dist/${{ matrix.binary_name }}-${{ matrix.target }}$ext
+          cp target/${{ matrix.target }}/release/wrapd$ext dist/${{ matrix.binary_name }}-v$CARGO_VERSION-${{ matrix.target }}$ext
 
-      - name: Upload artifact
+      - name: Upload artifact - no version
         uses: actions/upload-artifact@v4
         with:
           name: binaries-${{ matrix.binary_name }}-${{ matrix.target }}
+          path: dist/*
+
+      - name: Upload artifact - with versions
+        uses: actions/upload-artifact@v4
+        with:
+          name: binaries-${{ matrix.binary_name }}-v{ $CARGO_VERSION }-${{ matrix.target }}
           path: dist/*
 
   release:
