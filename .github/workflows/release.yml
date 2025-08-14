@@ -45,6 +45,7 @@ jobs:
         run: |
           CARGO_VERSION=$(awk '/^version = "/ {gsub(/"/, "", $3); print $3; exit}' Cargo.toml)
           echo "Cargo Version = v$CARGO_VERSION"
+          echo "CARGO_VERSION=$CARGO_VERSION" >> $GITHUB_ENV
 
       - name: Rename binary for upload
         run: |
@@ -64,7 +65,7 @@ jobs:
       - name: Upload artifact - with versions
         uses: actions/upload-artifact@v4
         with:
-          name: binaries-${{ matrix.binary_name }}-v{ $CARGO_VERSION }-${{ matrix.target }}
+          name: binaries-${{ matrix.binary_name }}-v${{ env.CARGO_VERSION }}-${{ matrix.target }}
           path: dist/*
 
   release:
