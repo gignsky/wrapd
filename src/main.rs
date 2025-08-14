@@ -8,7 +8,7 @@ use tar::Builder;
 /// Application configuration
 struct Args {
     /// Print Verbose output
-    #[arg(short = 'v')]
+    #[arg(short = 'v', long = "verbose")]
     verbose: bool,
 
     /// Remove folders after tarballing
